@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Titulito from './Titulito';
+import Menu from './Menu';
 import Piesito from './Piesito';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
   	<Titulito />
+	<Menu />
     <App />
 	<Piesito />
   </React.StrictMode>,
