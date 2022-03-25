@@ -1,8 +1,8 @@
-
+import DeleteIcon from '@mui/icons-material/Delete';
 function Submit()
 {
 	return(
-		<button>Añadir</button>
+		<DeleteIcon />
 	);
 }
 export default Submit;

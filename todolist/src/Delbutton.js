@@ -1,11 +1,13 @@
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 function Delbutton (props)
 {
 	return(
-		<button onClick={event => {
-				event.preventDefault();
-				console.log("Hola");
+		<Button startIcon={<DeleteIcon />} variant="outlined" onClick={function (event){
+				props.removeTask(props.id_task);
 			}
-		}>DEL</button>
+		}>BORRAR</Button>
 	);
 }
 export default Delbutton;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TextField from '@mui/material/TextField';
 class  Input extends React.Component{
 	constructor(props){
 		super(props);
@@ -16,9 +16,7 @@ class  Input extends React.Component{
 	}
 	render() {
 		return(
-		<label htmlFor="input">Tarea
-		<input type="text" id="input" onChange={this.handleChange} value={this.state.value} />
-		</label>
+		<TextField id="standard-basic" label="tarea"  onChange={this.handleChange} value={this.state.value} />
 		);
 	}
 }
