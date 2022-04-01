@@ -19,9 +19,6 @@ class Delbutton extends React.Component{
 			open: false
 		 };
 	}
-	handleOnClick = ()=>{
-		this.setState({open: true });
-	}
 	handleDelete = () =>{
 		this.props.removeTask(this.props.task_id);
 		this.setState({open:false});
@@ -29,30 +26,34 @@ class Delbutton extends React.Component{
 	handleClose = () => {
 		this.setState({open:false});
     }
-
+	handleOnClick = ()=>{
+		this.setState({open: true });
+	}
  	render() {
  		return (
 		<div>
 			<Button variant="contained" 
 					startIcon=<DeleteIcon /> 
-					onClick={this.handleOnClick}>	
-			DELETE
-			</Button>
+					onClick={this.handleOnClick}>
+			DELETE</Button>
+
 			<Dialog  
 				open={this.state.open}
-				onClose={this.handleClose}
-				>
+				onClose={this.handleClose}>
+				
 				<DialogTitle>
 					{'Are you sure?'}
 				</DialogTitle>
+				
 				<DialogActions>
-					<Button onClick={this.handleDelete}>
-						<DoneIcon />
+						<Button onClick={this.handleDelete}>
+							<DoneIcon />
+						</Button>
+				
+					<Button onClick={this.handleClose}> 
+						<CloseIcon />
 					</Button>
-				<Button onClick={this.handleClose}> 
-					<CloseIcon />
-				</Button>
-			</DialogActions>
+				</DialogActions>
 		</Dialog>
 	</div>
 	);
