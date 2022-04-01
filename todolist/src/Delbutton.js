@@ -46,16 +46,14 @@ class Delbutton extends React.Component{
 				</DialogTitle>
 				
 				<DialogActions>
-						<Button onClick={this.handleDelete}>
-							<DoneIcon />
+						<Button startIcon={<DoneIcon />} onClick={this.handleDelete}>		
 						</Button>
 				
-					<Button onClick={this.handleClose}> 
-						<CloseIcon />
+					<Button startIcon={<CloseIcon />} onClick={this.handleClose}>					
 					</Button>
 				</DialogActions>
-		</Dialog>
-	</div>
+			</Dialog>
+		</div>
 	);
 	}
 }
