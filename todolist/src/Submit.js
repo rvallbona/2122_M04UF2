@@ -1,8 +1,9 @@
-import DeleteIcon from '@mui/icons-material/Delete';
+
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 function Submit()
 {
 	return(
-		<DeleteIcon />
+		<button><AddCircleIcon /></button>
 	);
 }
 export default Submit;
