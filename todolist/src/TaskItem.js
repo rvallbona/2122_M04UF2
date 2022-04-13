@@ -1,9 +1,13 @@
+import RemoveTask from './RemoveTask';
+
 import ListItem from '@mui/material/ListItem';
-import Delbutton from './Delbutton';
-function Item (props)
+
+function TaskItem (props)
 {
 	return(
-		<ListItem>{props.task} <Delbutton id_task={props.id_task}removeTask={props.removeTask} /></ListItem>
+		<ListItem>{props.task} <RemoveTask id_task={props.id_task} removeTask={props.removeTask}/></ListItem>
 	);
+
 }
-export default Item;
+
+export default TaskItem;
