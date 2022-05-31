@@ -6,7 +6,7 @@ class TaskInput extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			value: props.value
+			value: ""
 		};
 	}
 
@@ -17,11 +17,12 @@ class TaskInput extends React.Component{
 		this.setState({
 			value: event.target.value
 		});
+		event.preventDefault();
 	}
 
 	render() {
 		return (
-		<TextField label="Tarea" onChange={this.handleChange} value={this.props.value}/>
+		<TextField fullWidth label="Tarea" onChange={this.handleChange} value={this.state.value}/>
 		);
 	}
 }

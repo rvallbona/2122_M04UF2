@@ -3,7 +3,7 @@
 const http = require("http");
 
 let mongo_client = require("mongodb").MongoClient;
-let ObjectId = require("mongodb").ObjectId;
+let ObjectId = require("mongodb").ObjectID;
 
 let url = "mongodb://localhost/";
 
@@ -31,30 +31,44 @@ http.createServer(function(req, res){
 
 	if (req.method == "POST"){
 
-		let task = "";
+		let task = [];
 		req.on('data', function(chunk){
 			task += chunk;
 		});
 
 		req.on('end', function(){
-			console.log(task);
-			let data = JSON.parse(task);
-			if (data.task != undefined){
-				db.collection("tasks").insertOne({'task':data.task});
-			}
-			else if (data.delete != undefined){
 
-			}
-		});
+		task = JSON.parse(task);	
+		if (task.remove == "false"){
+			db.collection("tasks").insertOne({"task":task.task});	
+			let new_obj = db.collection("tasks").find().sort({"_id":-1}).limit(1);
+			let obj_id;
 
-		return;
+			new_obj.toArray(function(error,doc){
+				obj_id  = JSON.stringify(doc);
+
+				res.end(obj_id);
+				return;
+			});
+		}
+		else {
+			let idd = new ObjectId(task.task_id);
+			let id =  {_id: idd};
+			db.collection("tasks").deleteOne(id);
+		}
+
+	});
+	
+	return;
+
 	}
 
-	let tasks = db.collection("tasks").find();
-	tasks.toArray(function(err, data){
-		let tasks_string = JSON.stringify(data);
-		res.write(tasks_string);
-		res.end();
+	let task_o = db.collection("tasks").find();
+	let tasks_string;
+	task_o.toArray(function(err, data){
+		tasks_string = JSON.stringify(data);
+		res.end(tasks_string);
+		return;
 	});
 
 }).listen(3030);

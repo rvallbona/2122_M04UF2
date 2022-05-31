@@ -3,7 +3,7 @@ import React from 'react';
 import TaskInput from './TaskInput';
 import TaskSubmit from './TaskSubmit';
 
-class TaskForm extends React.Component{
+class  TaskForm extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -11,33 +11,24 @@ class TaskForm extends React.Component{
 		};
 	}
 
-	handleSubmit = (event) => {
+	handleSubmit = event => {
 		event.preventDefault();
 		this.props.addTask(this.state.task);
-
-		this.state.task = "";
-		this.setState({
-			task: this.state.task
-		});
 	}
 
-	handleChange = (event) => {
+	handleChange = event => {
 		this.setState({
 			task: event.target.value
 		});
 	}
 
-	render()
-	{
+	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-			<TaskInput value={this.state.task} handleChange={this.handleChange} />
-			<TaskSubmit />
+			<form onSubmit={this.handleSubmit} >
+				<TaskInput handleChange={this.handleChange} onSubmit={this.handleSubmit}/>
+				<TaskSubmit onSubmit={this.handleSubmit}/>
 			</form>
 		);
-
 	}
 }
-
-
 export default TaskForm;
